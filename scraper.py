@@ -169,6 +169,9 @@ def main():
     existing = load_existing()
     if existing:
         print(f"  已查询过 {len(existing)} 人,将跳过")
+        if len(existing) == total:
+            print("  全部学生均已查询，无需重复请求。")
+            return
 
     # 创建 session
     session = requests.Session()
