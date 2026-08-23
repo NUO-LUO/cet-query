@@ -11,7 +11,7 @@ CET 四六级成绩批量查询爬虫
   - 成绩发布前运行,首个查询会返回 code=403 并正常退出(exit 0)
   - 身份证号在写入 scores.json 前已脱敏(前4后4),名单不进公开仓库
   - 支持断点续跑:已查询过(queried=true)的学生会自动跳过
-  - 请求间隔 1 秒,730 人约需 25 分钟
+  - 请求间隔 2 秒 + 每 50 人冷却 10 秒,730 人约需 35 分钟
 """
 
 import json
@@ -19,6 +19,9 @@ import os
 import sys
 import time
 from datetime import datetime
+
+# 强制实时输出，避免 GitHub Actions 日志缓冲看不到进度
+sys.stdout.reconfigure(line_buffering=True)
 
 try:
     import requests
@@ -40,7 +43,7 @@ except ImportError:
 API_URL = "https://appquery.neea.edu.cn/latest/results/cet"
 EXCEL_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "account", "福清华侨中学学生名单.xlsx")
 OUTPUT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "scores.json")
-REQUEST_INTERVAL = 1  # 请求间隔(秒)
+REQUEST_INTERVAL = 2  # 请求间隔(秒)，防限流
 # ================================================
 
 
@@ -101,7 +104,7 @@ def query_score(session, name, id_number, km=1):
     }
     for attempt in range(1, 4):
         try:
-            resp = session.get(API_URL, params=params, timeout=15)
+            resp = session.get(API_URL, params=params, timeout=10)
             if resp.status_code == 200:
                 data = resp.json()
                 code = data.get("code")
@@ -131,7 +134,7 @@ def query_score(session, name, id_number, km=1):
             print(f"\n  [错误] 第 {attempt}/3 次请求异常: {e}")
 
         if attempt < 3:
-            time.sleep(10)
+            time.sleep(5)
 
     return None, False
 
@@ -247,10 +250,11 @@ def main():
 
         results.append(entry)
 
-        # 每 50 人保存一次进度
+        # 每 50 人保存一次进度 + 冷却防限流
         if (i + 1) % 50 == 0:
             save_results(results)
-            print(f"  --- 已保存进度 ({i+1}/{total}) ---")
+            print(f"  --- 已保存进度 ({i+1}/{total})，冷却 10 秒 ---", flush=True)
+            time.sleep(10)
 
     # 最终保存
     save_results(results)
