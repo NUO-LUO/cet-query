@@ -16,6 +16,7 @@ CET 四六级成绩批量查询爬虫
 
 import json
 import os
+import subprocess
 import sys
 import time
 from datetime import datetime
@@ -152,6 +153,37 @@ def save_results(results):
         json.dump(output, f, ensure_ascii=False, indent=2)
 
 
+def push_progress(count, total):
+    """在 GitHub Actions 环境中将进度 push 回仓库，实现真正的断点续跑"""
+    token = os.environ.get("GITHUB_TOKEN")
+    if not token:
+        return  # 本地运行，跳过
+    try:
+        repo = os.environ.get("GITHUB_REPOSITORY", "NUO-LUO/cet-query")
+        branch = os.environ.get("GITHUB_REF_NAME", "master")
+        subprocess.run(
+            ["git", "config", "user.name", "github-actions[bot]"], check=False,
+            capture_output=True)
+        subprocess.run(
+            ["git", "config", "user.email", "github-actions[bot]@users.noreply.github.com"],
+            check=False, capture_output=True)
+        subprocess.run(
+            ["git", "remote", "set-url", "origin",
+             f"https://x-access-token:{token}@github.com/{repo}.git"],
+            check=False, capture_output=True)
+        subprocess.run(["git", "add", "scores.json"], check=False, capture_output=True)
+        r = subprocess.run(
+            ["git", "commit", "-m", f"chore: 查询进度 {count}/{total}"],
+            check=False, capture_output=True, text=True)
+        if "nothing to commit" not in r.stdout and "no changes" not in r.stdout.lower():
+            subprocess.run(
+                ["git", "push", "origin", f"HEAD:{branch}"],
+                check=False, capture_output=True)
+            print(f"  >>> 进度已 push 到仓库 ({count}/{total})", flush=True)
+    except Exception as e:
+        print(f"  [警告] push 进度失败: {e}", flush=True)
+
+
 def main():
     print("=" * 50)
     print("  CET 四六级成绩批量查询工具")
@@ -250,9 +282,10 @@ def main():
 
         results.append(entry)
 
-        # 每 50 人保存一次进度 + 冷却防限流
+        # 每 50 人保存一次进度 + push 到仓库 + 冷却防限流
         if (i + 1) % 50 == 0:
             save_results(results)
+            push_progress(i + 1, total)
             print(f"  --- 已保存进度 ({i+1}/{total})，冷却 10 秒 ---", flush=True)
             time.sleep(10)
 

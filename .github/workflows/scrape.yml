@@ -48,6 +48,10 @@ jobs:
         ls -la account/
 
     - name: Run scraper
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+        GITHUB_REF_NAME: ${{ github.ref_name }}
       run: python scraper.py
 
     - name: Commit and push results
