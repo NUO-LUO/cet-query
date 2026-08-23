@@ -38,10 +38,13 @@ jobs:
 
     - name: Restore student roster
       env:
-        ROSTER_XLSX_B64: ${{ secrets.ROSTER_XLSX_B64 }}
+        # GitHub 单个 Secret 无法容纳加密后的完整名单，因此拆为两段保存。
+        ROSTER_XLSX_B64_PART_1: ${{ secrets.ROSTER_XLSX_B64_PART_1 }}
+        ROSTER_XLSX_B64_PART_2: ${{ secrets.ROSTER_XLSX_B64_PART_2 }}
       run: |
         mkdir -p account
-        echo "$ROSTER_XLSX_B64" | base64 -d > "account/福清华侨中学学生名单.xlsx"
+        printf '%s%s' "$ROSTER_XLSX_B64_PART_1" "$ROSTER_XLSX_B64_PART_2" | base64 -d > "account/福清华侨中学学生名单.xlsx"
+        test -s "account/福清华侨中学学生名单.xlsx"
         ls -la account/
 
     - name: Run scraper
