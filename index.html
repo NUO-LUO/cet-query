@@ -52,6 +52,7 @@
   .student-name{font-size:20px;font-weight:700}
   .student-class{font-size:13px;color:var(--text-secondary);background:#f1f5f9;padding:4px 12px;border-radius:8px}
   .student-id{font-size:12px;color:#94a3b8;margin-top:2px}
+  .student-school{font-size:12px;color:var(--primary);margin-top:2px;font-weight:500}
 
   .score-section{margin-bottom:16px}
   .score-section:last-child{margin-bottom:0}
@@ -254,8 +255,10 @@ function renderResults(results, keyword) {
   let html = "";
   results.forEach(s => {
     const passed = isPassed(s);
+    // 获取学校信息（优先从有成绩的项取）
+    const school = (s.cet4 && s.cet4.school) || (s.cet6 && s.cet6.school) || "";
     html += `<div class="result-card">`;
-    html += `<div class="card-header"><div><div class="student-name">${highlightName(s.name, keyword)}</div><div class="student-id">${maskId(s.id)}</div></div><div style="display:flex;align-items:center;gap:8px"><span class="student-class">${s.class}</span>${s.cet4 || s.cet6 ? `<span class="pass-tag ${passed ? 'yes' : 'no'}">${passed ? '已通过' : '未通过'}</span>` : ''}</div></div>`;
+    html += `<div class="card-header"><div><div class="student-name">${highlightName(s.name, keyword)}</div><div class="student-id">${maskId(s.id)}</div>${school ? `<div class="student-school">🏫 ${escapeHtml(school)}</div>` : ''}</div><div style="display:flex;align-items:center;gap:8px"><span class="student-class">${s.class}</span>${s.cet4 || s.cet6 ? `<span class="pass-tag ${passed ? 'yes' : 'no'}">${passed ? '已通过' : '未通过'}</span>` : ''}</div></div>`;
 
     if (s.cet4) {
       html += renderScoreSection(s.cet4, "cet4", "CET-4 四级");
