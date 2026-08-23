@@ -1,0 +1,15 @@
+# 学生名单(含完整身份证号,绝不进公开仓库,通过 GitHub Secret 注入)
+account/
+*.xlsx
+*.b64
+
+# 运行时产物
+failed.json
+__pycache__/
+*.pyc
+
+# 系统
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
