@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CET 成绩查询 - 福清华侨中学</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --primary:#2563eb;--primary-light:#3b82f6;--primary-dark:#1d4ed8;
+    --bg:#f0f4f8;--card:#fff;--text:#1e293b;--text-secondary:#64748b;
+    --border:#e2e8f0;--success:#10b981;--warning:#f59e0b;--danger:#ef4444;
+    --shadow:0 4px 24px rgba(0,0,0,.06);
+  }
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+  .header{background:linear-gradient(135deg,var(--primary) 0%,#7c3aed 100%);color:#fff;padding:48px 20px 56px;text-align:center;position:relative}
+  .header::after{content:"";position:absolute;bottom:-24px;left:0;right:0;height:48px;background:var(--bg);border-radius:24px 24px 0 0}
+  .header h1{font-size:28px;font-weight:700;margin-bottom:6px;letter-spacing:1px}
+  .header p{font-size:14px;opacity:.85}
+
+  .search-wrap{max-width:560px;margin:-12px auto 0;position:relative;z-index:2;padding:0 16px}
+  .search-box{display:flex;background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;border:2px solid transparent;transition:border-color .2s}
+  .search-box:focus-within{border-color:var(--primary-light)}
+  .search-box input{flex:1;border:none;outline:none;padding:16px 20px;font-size:16px;background:transparent;color:var(--text)}
+  .search-box input::placeholder{color:#94a3b8}
+  .search-box button{background:var(--primary);color:#fff;border:none;padding:0 24px;font-size:15px;cursor:pointer;transition:background .2s;white-space:nowrap}
+  .search-box button:hover{background:var(--primary-dark)}
+
+  .filters{max-width:800px;margin:16px auto 0;padding:0 16px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .filter-label{font-size:12px;color:var(--text-secondary);width:100%;text-align:center;margin-bottom:2px}
+  .chip{padding:6px 16px;border-radius:20px;font-size:13px;cursor:pointer;border:1px solid var(--border);background:var(--card);color:var(--text-secondary);transition:all .2s;user-select:none}
+  .chip:hover{border-color:var(--primary-light);color:var(--primary)}
+  .chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+  .chip.pass-chip.active{background:var(--success);border-color:var(--success)}
+  .chip.fail-chip.active{background:var(--danger);border-color:var(--danger)}
+
+  .stats{max-width:800px;margin:24px auto 0;padding:0 16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .stat-item{background:var(--card);border-radius:12px;padding:12px 20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.04);min-width:120px}
+  .stat-num{font-size:24px;font-weight:700;color:var(--primary)}
+  .stat-label{font-size:12px;color:var(--text-secondary);margin-top:2px}
+
+  .container{max-width:800px;margin:24px auto;padding:0 16px 60px}
+
+  .status{text-align:center;padding:40px 20px;color:var(--text-secondary)}
+  .status .icon{font-size:48px;margin-bottom:12px}
+  .status .msg{font-size:15px}
+
+  .result-card{background:var(--card);border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:var(--shadow);transition:transform .15s;border:1px solid var(--border)}
+  .result-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.1)}
+  .card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+  .student-name{font-size:20px;font-weight:700}
+  .student-class{font-size:13px;color:var(--text-secondary);background:#f1f5f9;padding:4px 12px;border-radius:8px}
+  .student-id{font-size:12px;color:#94a3b8;margin-top:2px}
+
+  .score-section{margin-bottom:16px}
+  .score-section:last-child{margin-bottom:0}
+  .level-badge{display:inline-block;padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;margin-bottom:10px}
+  .level-badge.cet4{background:#dbeafe;color:#1d4ed8}
+  .level-badge.cet6{background:#ede9fe;color:#6d28d9}
+
+  .score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:12px}
+  .score-item{text-align:center;padding:12px 8px;background:#f8fafc;border-radius:10px}
+  .score-item .label{font-size:11px;color:var(--text-secondary);margin-bottom:4px}
+  .score-item .value{font-size:22px;font-weight:700}
+  .score-item .value.pass{color:var(--success)}
+  .score-item .value.fail{color:var(--danger)}
+  .score-item.total{background:linear-gradient(135deg,#eff6ff,#f0f0ff)}
+  .score-item.total .value{font-size:28px;color:var(--primary)}
+
+  .pass-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;margin-left:8px;font-weight:600}
+  .pass-tag.yes{background:#d1fae5;color:#065f46}
+  .pass-tag.no{background:#fee2e2;color:#991b1b}
+
+  .divider{height:1px;background:var(--border);margin:16px 0}
+
+  .no-result{background:#fef3c7;border:1px solid #fde68a;border-radius:12px;padding:16px 20px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+  .no-result .icon{font-size:20px}
+  .no-result .text{font-size:14px;color:#92400e}
+
+  .update-time{text-align:center;font-size:12px;color:#94a3b8;margin-top:24px;padding-bottom:20px}
+
+  .loading{text-align:center;padding:60px 20px}
+  .spinner{width:40px;height:40px;border:4px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  @media(max-width:480px){
+    .header{padding:36px 16px 44px}
+    .header h1{font-size:22px}
+    .score-grid{grid-template-columns:repeat(2,1fr)}
+    .result-card{padding:18px}
+    .student-name{font-size:18px}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>CET 成绩查询</h1>
+  <p>福清华侨中学 · 2025年上半年四六级成绩</p>
+</div>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="输入姓名搜索..." autocomplete="off">
+    <button onclick="doSearch()">搜索</button>
+  </div>
+</div>
+
+<div class="filters" id="classFilters">
+  <div class="filter-label">按班级筛选</div>
+  <span class="chip active" data-filter="all" onclick="setClassFilter(this)">全部</span>
+  <span class="chip" data-filter="1班" onclick="setClassFilter(this)">1班</span>
+  <span class="chip" data-filter="2班" onclick="setClassFilter(this)">2班</span>
+  <span class="chip" data-filter="3班" onclick="setClassFilter(this)">3班</span>
+  <span class="chip" data-filter="4班" onclick="setClassFilter(this)">4班</span>
+  <span class="chip" data-filter="5班" onclick="setClassFilter(this)">5班</span>
+  <span class="chip" data-filter="6班" onclick="setClassFilter(this)">6班</span>
+  <span class="chip" data-filter="7班" onclick="setClassFilter(this)">7班</span>
+  <span class="chip" data-filter="8班" onclick="setClassFilter(this)">8班</span>
+  <span class="chip" data-filter="9班" onclick="setClassFilter(this)">9班</span>
+  <span class="chip" data-filter="10班" onclick="setClassFilter(this)">10班</span>
+  <span class="chip" data-filter="11班" onclick="setClassFilter(this)">11班</span>
+  <span class="chip" data-filter="12班" onclick="setClassFilter(this)">12班</span>
+</div>
+
+<div class="filters" id="passFilters">
+  <div class="filter-label">按成绩状态筛选</div>
+  <span class="chip active" data-filter="all" onclick="setPassFilter(this)">全部</span>
+  <span class="chip pass-chip" data-filter="pass" onclick="setPassFilter(this)">已通过</span>
+  <span class="chip fail-chip" data-filter="fail" onclick="setPassFilter(this)">未通过</span>
+  <span class="chip" data-filter="no_score" onclick="setPassFilter(this)">未查询到成绩</span>
+</div>
+
+<div class="stats" id="stats"></div>
+
+<div class="container" id="results">
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <div style="color:var(--text-secondary);font-size:14px">加载数据中...</div>
+  </div>
+</div>
+
+<div class="update-time" id="updateTime"></div>
+
+<script>
+let allData = [];
+let currentClass = "all";
+let currentPass = "all";
+
+// 判断学生是否有成绩
+function hasScore(s) {
+  return !!(s.cet4 || s.cet6);
+}
+
+// 判断学生是否通过（按实际参加的考试判断，仅对有成绩的学生）
+function isPassed(s) {
+  if (s.cet4 && s.cet4.total >= 425) return true;
+  if (s.cet6 && s.cet6.total >= 425) return true;
+  return false;
+}
+
+// 加载数据
+async function loadData() {
+  try {
+    const resp = await fetch("scores.json?t=" + Date.now());
+    if (!resp.ok) throw new Error("HTTP " + resp.status);
+    const json = await resp.json();
+    allData = json.data || [];
+    document.getElementById("updateTime").textContent = "数据更新时间: " + (json.update_time || "未知");
+    showStats(allData);
+    applyFilters();
+  } catch (e) {
+    document.getElementById("loading").innerHTML =
+      '<div class="status"><div class="icon">📭</div><div class="msg">暂无数据<br><small style="color:#94a3b8">请先运行爬虫脚本抓取成绩，或将 scores.json 上传到此页面同目录</small></div></div>';
+  }
+}
+
+// 显示统计（基于当前筛选结果）
+function showStats(data) {
+  const total = data.length;
+  const cet4 = data.filter(s => s.cet4).length;
+  const cet6 = data.filter(s => s.cet6).length;
+  const passed = data.filter(s => hasScore(s) && isPassed(s)).length;
+  const failed = data.filter(s => hasScore(s) && !isPassed(s)).length;
+  const noScore = data.filter(s => !hasScore(s)).length;
+  document.getElementById("stats").innerHTML = `
+    <div class="stat-item"><div class="stat-num">${total}</div><div class="stat-label">总人数</div></div>
+    <div class="stat-item"><div class="stat-num">${cet4}</div><div class="stat-label">考四级</div></div>
+    <div class="stat-item"><div class="stat-num">${cet6}</div><div class="stat-label">考六级</div></div>
+    <div class="stat-item"><div class="stat-num" style="color:var(--success)">${passed}</div><div class="stat-label">已通过</div></div>
+    <div class="stat-item"><div class="stat-num" style="color:var(--danger)">${failed}</div><div class="stat-label">未通过</div></div>
+    <div class="stat-item"><div class="stat-num" style="color:var(--text-secondary)">${noScore}</div><div class="stat-label">未查询到</div></div>
+  `;
+}
+
+// 应用筛选
+function applyFilters() {
+  const keyword = document.getElementById("searchInput").value.trim();
+  let filtered = allData;
+
+  // 班级筛选
+  if (currentClass !== "all") {
+    filtered = filtered.filter(s => s.class === currentClass);
+  }
+
+  // 成绩状态筛选
+  if (currentPass === "pass") {
+    filtered = filtered.filter(s => hasScore(s) && isPassed(s));
+  } else if (currentPass === "fail") {
+    filtered = filtered.filter(s => hasScore(s) && !isPassed(s));
+  } else if (currentPass === "no_score") {
+    filtered = filtered.filter(s => !hasScore(s));
+  }
+
+  // 姓名搜索
+  if (keyword) {
+    filtered = filtered.filter(s => s.name.includes(keyword));
+  }
+
+  showStats(filtered);
+  renderResults(filtered, keyword);
+}
+
+function showAll() { applyFilters(); }
+
+// 搜索
+function doSearch() { applyFilters(); }
+
+// 班级筛选
+function setClassFilter(el) {
+  document.querySelectorAll("#classFilters .chip").forEach(c => c.classList.remove("active"));
+  el.classList.add("active");
+  currentClass = el.dataset.filter;
+  applyFilters();
+}
+
+// 通过情况筛选
+function setPassFilter(el) {
+  document.querySelectorAll("#passFilters .chip").forEach(c => c.classList.remove("active"));
+  el.classList.add("active");
+  currentPass = el.dataset.filter;
+  applyFilters();
+}
+
+// 渲染结果
+function renderResults(results, keyword) {
+  const container = document.getElementById("results");
+  if (results.length === 0) {
+    container.innerHTML = `<div class="status"><div class="icon"></div><div class="msg">${keyword ? '未找到 "' + escapeHtml(keyword) + '" 的相关记录' : '当前筛选条件下暂无数据'}</div></div>`;
+    return;
+  }
+
+  let html = "";
+  results.forEach(s => {
+    const passed = isPassed(s);
+    html += `<div class="result-card">`;
+    html += `<div class="card-header"><div><div class="student-name">${highlightName(s.name, keyword)}</div><div class="student-id">${maskId(s.id)}</div></div><div style="display:flex;align-items:center;gap:8px"><span class="student-class">${s.class}</span>${s.cet4 || s.cet6 ? `<span class="pass-tag ${passed ? 'yes' : 'no'}">${passed ? '已通过' : '未通过'}</span>` : ''}</div></div>`;
+
+    if (s.cet4) {
+      html += renderScoreSection(s.cet4, "cet4", "CET-4 四级");
+    }
+    if (s.cet6) {
+      if (s.cet4) html += `<div class="divider"></div>`;
+      html += renderScoreSection(s.cet6, "cet6", "CET-6 六级");
+    }
+    if (!s.cet4 && !s.cet6) {
+      html += `<div class="no-result"><span class="icon">️</span><span class="text">未查到成绩，可能未参加本次考试或信息有误。</span></div>`;
+    }
+
+    html += `</div>`;
+  });
+
+  container.innerHTML = html;
+}
+
+// 渲染成绩区域
+function renderScoreSection(score, cls, label) {
+  const total = score.total;
+  const pass = total >= 425;
+  let html = `<div class="score-section">`;
+  html += `<span class="level-badge ${cls}">${label}</span>`;
+  html += `<div class="score-grid">`;
+  html += `<div class="score-item total"><div class="label">总分</div><div class="value ${pass ? 'pass' : 'fail'}">${total}</div></div>`;
+  html += `<div class="score-item"><div class="label">听力</div><div class="value">${score.listening || "-"}</div></div>`;
+  html += `<div class="score-item"><div class="label">阅读</div><div class="value">${score.reading || "-"}</div></div>`;
+  html += `<div class="score-item"><div class="label">写作</div><div class="value">${score.writing || "-"}</div></div>`;
+  html += `</div></div>`;
+  return html;
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+function highlightName(name, keyword) {
+  if (!keyword) return escapeHtml(name);
+  const escaped = escapeHtml(name);
+  const kw = escapeHtml(keyword);
+  return escaped.replace(new RegExp(kw, "g"), `<mark style="background:#fef08a;padding:0 2px;border-radius:2px">${kw}</mark>`);
+}
+
+function maskId(id) {
+  if (!id) return "";
+  if (id.includes("*")) return id; // 已是脱敏值,直接返回
+  if (id.length <= 8) return id;
+  return id.substring(0, 4) + "****" + id.substring(id.length - 4);
+}
+
+document.getElementById("searchInput").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") doSearch();
+});
+
+let searchTimer;
+document.getElementById("searchInput").addEventListener("input", function() {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(doSearch, 300);
+});
+
+loadData();
+</script>
+</body>
+</html>
