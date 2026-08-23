@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-08-23 23:35:06",
-  "total_students": 700,
-  "queried_count": 333,
+  "update_time": "2026-08-23 23:36:07",
+  "total_students": 730,
+  "queried_count": 335,
   "data": [
     {
       "class": "1班",
@@ -9340,6 +9340,320 @@
       },
       "queried": true,
       "status": "found"
+    },
+    {
+      "class": "12班",
+      "name": "张欣",
+      "id": "3501********032X",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "303",
+        "listening": "121",
+        "reading": "113",
+        "writing": "69",
+        "ticket": "140071261205828",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "12班",
+      "name": "汤铠源",
+      "id": "6527********0226",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "12班",
+      "name": "贾娅妮",
+      "id": "3304********0021",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "12班",
+      "name": "陈琳清",
+      "id": "3501********0067",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "12班",
+      "name": "杨芹雨",
+      "id": "3501********0063",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "12班",
+      "name": "郑佳绮",
+      "id": "3501********0065",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "12班",
+      "name": "林子婧",
+      "id": "3501********004X",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "12班",
+      "name": "何梦涵",
+      "id": "3501********0047",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "367",
+        "listening": "121",
+        "reading": "141",
+        "writing": "105",
+        "ticket": "110301261203006",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "12班",
+      "name": "林静欣",
+      "id": "3501********008X",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "12班",
+      "name": "钟祯鋆",
+      "id": "3501********0275",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "12班",
+      "name": "陈欣彤",
+      "id": "3510********2474",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "陈仡亮",
+      "id": "3510********2475",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "郭日臻",
+      "id": "3510********8961",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "何鸿鑫",
+      "id": "3510********8965",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "林晨晞",
+      "id": "3510********0063",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "吕彩云",
+      "id": "3510********3331",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "李瑞希",
+      "id": "3510********0076",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "陈昱伸",
+      "id": "3510********3341",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "连书弘",
+      "id": "3510********2740",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "余悦",
+      "id": "3510********3530",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "游清心",
+      "id": "3510********3531",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "江以珊",
+      "id": "3510********2671",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "陈思琪",
+      "id": "3510********2672",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "李昕",
+      "id": "3510********6817",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "林子畅",
+      "id": "3511********0451",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "林语微",
+      "id": "3510********2056",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "陈乐仪",
+      "id": "3501********0203",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "12班",
+      "name": "刘曦",
+      "id": "3512********3431",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "曾心怡",
+      "id": "3510********2473",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "12班",
+      "name": "黄弘凯",
+      "id": "3510********2471",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
     }
   ]
 }
