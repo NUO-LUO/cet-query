@@ -284,7 +284,7 @@ function renderScoreSection(score, cls, label) {
   html += `<div class="score-item total"><div class="label">总分</div><div class="value ${pass ? 'pass' : 'fail'}">${total}</div></div>`;
   html += `<div class="score-item"><div class="label">听力</div><div class="value">${score.listening || "-"}</div></div>`;
   html += `<div class="score-item"><div class="label">阅读</div><div class="value">${score.reading || "-"}</div></div>`;
-  html += `<div class="score-item"><div class="label">写作</div><div class="value">${score.writing || "-"}</div></div>`;
+  html += `<div class="score-item"><div class="label">写作和翻译</div><div class="value">${score.writing || "-"}</div></div>`;
   html += `</div></div>`;
   return html;
 }
