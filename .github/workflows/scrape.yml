@@ -1,0 +1,56 @@
+name: CET Score Scraper
+
+on:
+  schedule:
+    # 北京时间 2026-08-24 06:00 (UTC 2026-08-23 22:00)
+    - cron: '0 22 23 8 *'
+    # 北京时间 2026-08-24 06:01
+    - cron: '1 22 23 8 *'
+    # 北京时间 2026-08-24 06:05
+    - cron: '5 22 23 8 *'
+  workflow_dispatch:  # 手动触发
+
+# 6:00、6:01、6:05 的任务必须串行：若 6:00 已开始查询，后两次会等待，
+# 避免同时向官方接口重复发送 730 人的请求。
+concurrency:
+  group: cet-score-scraper
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        pip install requests openpyxl
+
+    - name: Restore student roster
+      env:
+        ROSTER_XLSX_B64: ${{ secrets.ROSTER_XLSX_B64 }}
+      run: |
+        mkdir -p account
+        echo "$ROSTER_XLSX_B64" | base64 -d > "account/福清华侨中学学生名单.xlsx"
+        ls -la account/
+
+    - name: Run scraper
+      run: python scraper.py
+
+    - name: Commit and push results
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add scores.json
+        git commit -m "自动更新成绩数据" || echo "No changes"
+        git push
