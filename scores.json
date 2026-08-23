@@ -1,7 +1,7 @@
 {
-  "update_time": "2026-08-23 23:16:42",
-  "total_students": 400,
-  "queried_count": 198,
+  "update_time": "2026-08-23 23:23:25",
+  "total_students": 500,
+  "queried_count": 255,
   "data": [
     {
       "class": "1班",
@@ -5395,6 +5395,1405 @@
       "cet6": null,
       "queried": true,
       "status": "not_found"
+    },
+    {
+      "class": "7班",
+      "name": "翁祺",
+      "id": "3501********0263",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "448",
+        "listening": "138",
+        "reading": "177",
+        "writing": "133",
+        "ticket": "410011261226916",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "纪文圣",
+      "id": "3501********0171",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "7班",
+      "name": "林智伟",
+      "id": "3501********0538",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "7班",
+      "name": "魏龙宝",
+      "id": "3501********0394",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "469",
+        "listening": "167",
+        "reading": "170",
+        "writing": "132",
+        "ticket": "120130261202009",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "陈骁健",
+      "id": "3501********0092",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "529",
+        "listening": "162",
+        "reading": "212",
+        "writing": "155",
+        "ticket": "351040261201114",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "陈信颖",
+      "id": "3501********0044",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "422",
+        "listening": "123",
+        "reading": "176",
+        "writing": "123",
+        "ticket": "353011261205219",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "杨子妍",
+      "id": "3501********0247",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "474",
+        "listening": "134",
+        "reading": "211",
+        "writing": "129",
+        "ticket": "351030261222028",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "何程峰",
+      "id": "3501********0519",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "494",
+        "listening": "168",
+        "reading": "184",
+        "writing": "142",
+        "ticket": "351051261205107",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "方宇馨",
+      "id": "3501********002X",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "7班",
+      "name": "陈妍伶",
+      "id": "3501********0187",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "375",
+        "listening": "95",
+        "reading": "184",
+        "writing": "96",
+        "ticket": "351051261214518",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "施心凌",
+      "id": "3501********0166",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "482",
+        "listening": "134",
+        "reading": "177",
+        "writing": "171",
+        "ticket": "355201261203403",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "张佳敏",
+      "id": "3503********0062",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "0",
+        "listening": "0",
+        "reading": "0",
+        "writing": "0",
+        "ticket": "351010261213617",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "何雨馨",
+      "id": "3501********0029",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "7班",
+      "name": "谢玮翔",
+      "id": "3501********0057",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "345",
+        "listening": "109",
+        "reading": "117",
+        "writing": "119",
+        "ticket": "230212261204219",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "梁俊杰",
+      "id": "3501********0176",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "366",
+        "listening": "80",
+        "reading": "170",
+        "writing": "116",
+        "ticket": "370510261211717",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "庄文欣",
+      "id": "3501********0204",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "7班",
+      "name": "苏以恩",
+      "id": "3501********0250",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "7班",
+      "name": "郑咏欣",
+      "id": "3501********0229",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "0",
+        "listening": "0",
+        "reading": "0",
+        "writing": "0",
+        "ticket": "351031261202529",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "陈祖鑫",
+      "id": "3501********0837",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "343",
+        "listening": "68",
+        "reading": "154",
+        "writing": "121",
+        "ticket": "610071261225117",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "严淑凯",
+      "id": "3501********073X",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "440",
+        "listening": "145",
+        "reading": "166",
+        "writing": "129",
+        "ticket": "351022261206003",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "林伊芯",
+      "id": "3501********0026",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "7班",
+      "name": "王统宇",
+      "id": "3501********0295",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "7班",
+      "name": "薛美样",
+      "id": "3501********0469",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "445",
+        "listening": "117",
+        "reading": "193",
+        "writing": "135",
+        "ticket": "352030261215119",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "张妍",
+      "id": "3501********0189",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "7班",
+      "name": "周道健",
+      "id": "3501********0190",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "431",
+        "listening": "156",
+        "reading": "161",
+        "writing": "114",
+        "ticket": "412530261218316",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "章筱勇",
+      "id": "3501********0455",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "448",
+        "listening": "138",
+        "reading": "166",
+        "writing": "144",
+        "ticket": "323010261208308",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "约提库尔",
+      "id": "6532********1015",
+      "id_short": false,
+      "cet4": {
+        "total": "467",
+        "listening": "147",
+        "reading": "193",
+        "writing": "127",
+        "ticket": "110570261100723",
+        "level": "四级"
+      },
+      "cet6": null,
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "何嘉诚",
+      "id": "3501********0076",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "7班",
+      "name": "林璇瑄",
+      "id": "3501********0406",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "414",
+        "listening": "112",
+        "reading": "181",
+        "writing": "121",
+        "ticket": "508152261214409",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "陈诺煊",
+      "id": "3501********0438",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "7班",
+      "name": "施磊",
+      "id": "3501********0559",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "7班",
+      "name": "陈志远",
+      "id": "3501********0374",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "526",
+        "listening": "179",
+        "reading": "218",
+        "writing": "129",
+        "ticket": "331041261200422",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "姚艺轩",
+      "id": "3501********0366",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "0",
+        "listening": "0",
+        "reading": "0",
+        "writing": "0",
+        "ticket": "351030261229129",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "高雅雯",
+      "id": "6501********2824",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "391",
+        "listening": "126",
+        "reading": "135",
+        "writing": "130",
+        "ticket": "110040261203529",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "7班",
+      "name": "苏比努尔",
+      "id": "6531********2623",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "林以乐",
+      "id": "3501********0579",
+      "id_short": false,
+      "cet4": {
+        "total": "444",
+        "listening": "156",
+        "reading": "128",
+        "writing": "160",
+        "ticket": "330041261102229",
+        "level": "四级"
+      },
+      "cet6": null,
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "吴建军",
+      "id": "3501********0371",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "384",
+        "listening": "134",
+        "reading": "135",
+        "writing": "115",
+        "ticket": "340120261216013",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "林可",
+      "id": "3501********0208",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "414",
+        "listening": "156",
+        "reading": "121",
+        "writing": "137",
+        "ticket": "340050261214302",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "陈思羽",
+      "id": "3501********0700",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "338",
+        "listening": "109",
+        "reading": "141",
+        "writing": "88",
+        "ticket": "230300261232811",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "宋雨蕾",
+      "id": "3510********5453",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "8班",
+      "name": "薛昊哲",
+      "id": "3510********3336",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "8班",
+      "name": "魏思绮",
+      "id": "3512********4547",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "8班",
+      "name": "薛岚熙",
+      "id": "3501********036X",
+      "id_short": false,
+      "cet4": {
+        "total": "0",
+        "listening": "0",
+        "reading": "0",
+        "writing": "0",
+        "ticket": "351022261115629",
+        "level": "四级"
+      },
+      "cet6": null,
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "姚若欣",
+      "id": "3501********0304",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "431",
+        "listening": "145",
+        "reading": "170",
+        "writing": "116",
+        "ticket": "351071261204602",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "陈柔冰",
+      "id": "3501********0060",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "336",
+        "listening": "106",
+        "reading": "113",
+        "writing": "117",
+        "ticket": "351201261203701",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "侯粤",
+      "id": "6532********0023",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "胡静",
+      "id": "4311********6711",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "陈烨凌",
+      "id": "3510********2668",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "8班",
+      "name": "严龙明",
+      "id": "3510********3323",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "8班",
+      "name": "颜晓晰",
+      "id": "3510********0070",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "8班",
+      "name": "陈雨杭",
+      "id": "3510********0079",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "8班",
+      "name": "李雨珊",
+      "id": "6531********3821",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "郑永霖",
+      "id": "3501********0512",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "336",
+        "listening": "117",
+        "reading": "117",
+        "writing": "102",
+        "ticket": "351071261209420",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "张思梦",
+      "id": "3501********0406",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "409",
+        "listening": "134",
+        "reading": "167",
+        "writing": "108",
+        "ticket": "351040261208524",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "薛炜晨",
+      "id": "3501********0570",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "332",
+        "listening": "117",
+        "reading": "107",
+        "writing": "108",
+        "ticket": "351201261207215",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "卢琪",
+      "id": "3508********2765",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "陈颜丰",
+      "id": "3501********0072",
+      "id_short": false,
+      "cet4": {
+        "total": "327",
+        "listening": "117",
+        "reading": "92",
+        "writing": "118",
+        "ticket": "359011261101411",
+        "level": "四级"
+      },
+      "cet6": null,
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "陈以景",
+      "id": "3501********0418",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "338",
+        "listening": "101",
+        "reading": "149",
+        "writing": "88",
+        "ticket": "353010261200225",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "王芷祺",
+      "id": "3501********0027",
+      "id_short": false,
+      "cet4": {
+        "total": "397",
+        "listening": "133",
+        "reading": "123",
+        "writing": "141",
+        "ticket": "351051261106030",
+        "level": "四级"
+      },
+      "cet6": null,
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "鲍艺鑫",
+      "id": "3501********0031",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "陈珊",
+      "id": "3501********0429",
+      "id_short": false,
+      "cet4": {
+        "total": "437",
+        "listening": "156",
+        "reading": "158",
+        "writing": "123",
+        "ticket": "351241261102102",
+        "level": "四级"
+      },
+      "cet6": null,
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "余添骏",
+      "id": "3501********0417",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "362",
+        "listening": "123",
+        "reading": "118",
+        "writing": "121",
+        "ticket": "360691261203503",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "施晨磊",
+      "id": "3501********031X",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "余诗琪",
+      "id": "3501********0482",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "435",
+        "listening": "140",
+        "reading": "174",
+        "writing": "121",
+        "ticket": "351040261205921",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "周成蹊",
+      "id": "3501********057X",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "537",
+        "listening": "185",
+        "reading": "217",
+        "writing": "135",
+        "ticket": "320100261220615",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "翁启勋",
+      "id": "3501********0196",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "夏梓菡",
+      "id": "3501********0222",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "437",
+        "listening": "134",
+        "reading": "159",
+        "writing": "144",
+        "ticket": "351071261210316",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "翁智涵",
+      "id": "3501********0430",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "郑融浩",
+      "id": "3501********0171",
+      "id_short": false,
+      "cet4": {
+        "total": "386",
+        "listening": "136",
+        "reading": "119",
+        "writing": "131",
+        "ticket": "430331261110705",
+        "level": "四级"
+      },
+      "cet6": null,
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "陈琮堃",
+      "id": "3501********0355",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "339",
+        "listening": "85",
+        "reading": "135",
+        "writing": "119",
+        "ticket": "220360261201209",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "陈语灵",
+      "id": "3501********0207",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "481",
+        "listening": "195",
+        "reading": "169",
+        "writing": "117",
+        "ticket": "330442261208913",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "丁阳",
+      "id": "3501********0275",
+      "id_short": false,
+      "cet4": {
+        "total": "482",
+        "listening": "152",
+        "reading": "182",
+        "writing": "148",
+        "ticket": "352151261104610",
+        "level": "四级"
+      },
+      "cet6": null,
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "周坊燕",
+      "id": "3501********0445",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "陈祉旭",
+      "id": "3501********0391",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "吴绍凡",
+      "id": "3501********065X",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "郭芳璟",
+      "id": "3501********0353",
+      "id_short": false,
+      "cet4": {
+        "total": "337",
+        "listening": "106",
+        "reading": "108",
+        "writing": "123",
+        "ticket": "355033261105205",
+        "level": "四级"
+      },
+      "cet6": null,
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "吴菲钒",
+      "id": "3501********0125",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "385",
+        "listening": "95",
+        "reading": "161",
+        "writing": "129",
+        "ticket": "358010261206610",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "周致航",
+      "id": "3501********0377",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "265",
+        "listening": "106",
+        "reading": "69",
+        "writing": "90",
+        "ticket": "352151261207930",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "倪锦程",
+      "id": "3501********0131",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "邵世杰",
+      "id": "3412********2213",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "308",
+        "listening": "78",
+        "reading": "128",
+        "writing": "102",
+        "ticket": "651041261216428",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "郭雨翔",
+      "id": "3501********0393",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "290",
+        "listening": "101",
+        "reading": "99",
+        "writing": "90",
+        "ticket": "352030261206604",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "江程",
+      "id": "4211********6611",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "陈宇萱",
+      "id": "3501********0506",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "林芷桐",
+      "id": "3501********042X",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "385",
+        "listening": "129",
+        "reading": "122",
+        "writing": "134",
+        "ticket": "353011261205629",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "陈怡欣",
+      "id": "3501********0487",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "372",
+        "listening": "140",
+        "reading": "145",
+        "writing": "87",
+        "ticket": "356010261204117",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "庄昊翔",
+      "id": "3510********2060",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "8班",
+      "name": "吴澜樱",
+      "id": "3511********2961",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "8班",
+      "name": "夏嘉怡",
+      "id": "3510********3527",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "8班",
+      "name": "叶俊甫",
+      "id": "3510********3532",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "8班",
+      "name": "陈佳琪",
+      "id": "3501********0061",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "366",
+        "listening": "134",
+        "reading": "117",
+        "writing": "115",
+        "ticket": "351060261212025",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "杨汝翕",
+      "id": "3501********0284",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "丽娜·吉肯",
+      "id": "6543********0923",
+      "id_short": false,
+      "cet4": {
+        "total": "437",
+        "listening": "152",
+        "reading": "134",
+        "writing": "151",
+        "ticket": "330071261107919",
+        "level": "四级"
+      },
+      "cet6": null,
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "王昱淞",
+      "id": "3412********0033",
+      "id_short": false,
+      "cet4": {
+        "total": "0",
+        "listening": "0",
+        "reading": "0",
+        "writing": "0",
+        "ticket": "323031261102413",
+        "level": "四级"
+      },
+      "cet6": null,
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "韦佳怡",
+      "id": "3503********2127",
+      "id_short": false,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "not_found"
+    },
+    {
+      "class": "8班",
+      "name": "杨之予",
+      "id": "3501********0328",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "406",
+        "listening": "156",
+        "reading": "122",
+        "writing": "128",
+        "ticket": "351132261200209",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "8班",
+      "name": "吴子宣",
+      "id": "3513********5553",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "8班",
+      "name": "陈旭",
+      "id": "3513********5554",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "8班",
+      "name": "李思晨",
+      "id": "3510********0075",
+      "id_short": true,
+      "cet4": null,
+      "cet6": null,
+      "queried": true,
+      "status": "id_incomplete"
+    },
+    {
+      "class": "8班",
+      "name": "阿尼西白克",
+      "id": "6530********0811",
+      "id_short": false,
+      "cet4": {
+        "total": "324",
+        "listening": "102",
+        "reading": "142",
+        "writing": "80",
+        "ticket": "130431261115308",
+        "level": "四级"
+      },
+      "cet6": null,
+      "queried": true,
+      "status": "found"
+    },
+    {
+      "class": "9班",
+      "name": "谢志航",
+      "id": "3501********0476",
+      "id_short": false,
+      "cet4": null,
+      "cet6": {
+        "total": "438",
+        "listening": "145",
+        "reading": "163",
+        "writing": "130",
+        "ticket": "353010261200426",
+        "level": "六级"
+      },
+      "queried": true,
+      "status": "found"
     }
   ]
 }
