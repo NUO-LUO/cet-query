@@ -110,7 +110,7 @@ def query_score(session, name, id_number, km=1):
                         "total": data.get("score"),
                         "listening": data.get("sco_lc"),
                         "reading": data.get("sco_rd"),
-                        # 注意:官方字段含义待真实数据验证,可能为"写作+翻译"合计
+                        # 官网成绩详情标为“写作和翻译”。
                         "writing": data.get("sco_wt"),
                         "ticket": data.get("zkzh", ""),
                         "level": "四级" if km == 1 else "六级"
