@@ -11,7 +11,7 @@ CET 四六级成绩批量查询爬虫
   - 成绩发布前运行,首个查询会返回 code=403 并正常退出(exit 0)
   - 身份证号在写入 scores.json 前已脱敏(前4后4),名单不进公开仓库
   - 支持断点续跑:已查询过(queried=true)的学生会自动跳过
-  - 请求间隔 0.5 秒 + 每 50 人冷却 5 秒,730 人约需 15 分钟
+  - 请求间隔 0.3 秒 + 每 50 人冷却 3 秒,730 人约需 10 分钟
 """
 
 import json
@@ -44,7 +44,7 @@ except ImportError:
 API_URL = "https://appquery.neea.edu.cn/latest/results/cet"
 EXCEL_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "account", "福清华侨中学学生名单.xlsx")
 OUTPUT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "scores.json")
-REQUEST_INTERVAL = 0.5  # 请求间隔(秒)
+REQUEST_INTERVAL = 0.3  # 请求间隔(秒)
 # ================================================
 
 
@@ -105,7 +105,7 @@ def query_score(session, name, id_number, km=1):
     }
     for attempt in range(1, 4):
         try:
-            resp = session.get(API_URL, params=params, timeout=8)
+            resp = session.get(API_URL, params=params, timeout=6)
             if resp.status_code == 200:
                 data = resp.json()
                 code = data.get("code")
@@ -136,7 +136,7 @@ def query_score(session, name, id_number, km=1):
             print(f"\n  [错误] 第 {attempt}/3 次请求异常: {e}")
 
         if attempt < 3:
-            time.sleep(3)
+            time.sleep(2)
 
     return None, False
 
@@ -287,8 +287,8 @@ def main():
         if (i + 1) % 50 == 0:
             save_results(results)
             push_progress(i + 1, total)
-            print(f"  --- 已保存进度 ({i+1}/{total})，冷却 5 秒 ---", flush=True)
-            time.sleep(5)
+            print(f"  --- 已保存进度 ({i+1}/{total})，冷却 3 秒 ---", flush=True)
+            time.sleep(3)
 
     # 最终保存
     save_results(results)
