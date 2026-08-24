@@ -327,6 +327,7 @@ function applyFilters() {
   document.getElementById("searchCount").textContent = keyword || selectedClasses.size > 0 || currentPass !== "all"
     ? `找到 ${filtered.length} 条结果` : "";
   showStats(filtered);
+  showRingCharts(filtered);
   renderResults(filtered, keyword);
 }
 
