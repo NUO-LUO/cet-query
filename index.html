@@ -5,100 +5,167 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CET 成绩查询 - 福清华侨中学</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    --primary:#2563eb;--primary-light:#3b82f6;--primary-dark:#1d4ed8;
-    --bg:#f0f4f8;--card:#fff;--text:#1e293b;--text-secondary:#64748b;
-    --border:#e2e8f0;--success:#10b981;--warning:#f59e0b;--danger:#ef4444;
-    --shadow:0 4px 24px rgba(0,0,0,.06);
-  }
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#3b82f6;--primary-dark:#2563eb;--primary-light:#60a5fa;
+  --accent:#8b5cf6;
+  --bg:#f8fafc;--card:#fff;--text:#0f172a;--text-secondary:#64748b;--text-muted:#94a3b8;
+  --border:#e2e8f0;--success:#10b981;--warning:#f59e0b;--danger:#ef4444;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,.08);
+  --shadow-lg:0 10px 30px rgba(0,0,0,.1);
+  --radius:12px;--radius-sm:8px;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5}
 
-  .header{background:linear-gradient(135deg,var(--primary) 0%,#7c3aed 100%);color:#fff;padding:48px 20px 56px;text-align:center;position:relative}
-  .header::after{content:"";position:absolute;bottom:-24px;left:0;right:0;height:48px;background:var(--bg);border-radius:24px 24px 0 0}
-  .header h1{font-size:28px;font-weight:700;margin-bottom:6px;letter-spacing:1px}
-  .header p{font-size:14px;opacity:.85}
+/* ===== Header ===== */
+.header{position:relative;overflow:hidden;background:linear-gradient(135deg,#1e3a5f 0%,#2d1b69 50%,#1e3a5f 100%);background-size:200% 200%;animation:gradientShift 12s ease infinite;color:#fff;padding:52px 20px 60px;text-align:center}
+@keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.header::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 0%,rgba(59,130,246,.3) 0%,transparent 60%),radial-gradient(ellipse at 70% 100%,rgba(139,92,246,.2) 0%,transparent 50%);pointer-events:none}
+.header::after{content:"";position:absolute;bottom:-1px;left:0;right:0;height:40px;background:var(--bg);border-radius:20px 20px 0 0}
+.header h1{font-size:30px;font-weight:700;letter-spacing:.5px;position:relative;text-shadow:0 2px 10px rgba(0,0,0,.2)}
+.header .subtitle{font-size:14px;opacity:.75;margin-top:4px;position:relative}
 
-  .search-wrap{max-width:560px;margin:-12px auto 0;position:relative;z-index:2;padding:0 16px}
-  .search-box{display:flex;background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;border:2px solid transparent;transition:border-color .2s}
-  .search-box:focus-within{border-color:var(--primary-light)}
-  .search-box input{flex:1;border:none;outline:none;padding:16px 20px;font-size:16px;background:transparent;color:var(--text)}
-  .search-box input::placeholder{color:#94a3b8}
-  .search-box button{background:var(--primary);color:#fff;border:none;padding:0 24px;font-size:15px;cursor:pointer;transition:background .2s;white-space:nowrap}
-  .search-box button:hover{background:var(--primary-dark)}
+/* Data banner */
+.data-banner{max-width:720px;margin:-20px auto 0;position:relative;z-index:2;padding:0 16px}
+.data-banner-inner{background:rgba(255,255,255,.12);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:14px 24px;display:flex;justify-content:center;gap:32px;flex-wrap:wrap;color:#fff;font-size:13px}
+.data-banner-inner .banner-item{display:flex;align-items:center;gap:6px}
+.data-banner-inner .banner-val{font-weight:700;font-size:16px}
+.data-banner-inner .banner-label{opacity:.7}
 
-  .filters{max-width:800px;margin:16px auto 0;padding:0 16px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-  .filter-label{font-size:12px;color:var(--text-secondary);width:100%;text-align:center;margin-bottom:2px}
-  .chip{padding:6px 16px;border-radius:20px;font-size:13px;cursor:pointer;border:1px solid var(--border);background:var(--card);color:var(--text-secondary);transition:all .2s;user-select:none}
-  .chip:hover{border-color:var(--primary-light);color:var(--primary)}
-  .chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
-  .chip.pass-chip.active{background:var(--success);border-color:var(--success)}
-  .chip.fail-chip.active{background:var(--danger);border-color:var(--danger)}
+/* ===== Search ===== */
+.search-wrap{max-width:560px;margin:20px auto 0;padding:0 16px;position:relative;z-index:2}
+.search-box{display:flex;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-md);overflow:hidden;border:2px solid transparent;transition:border-color .2s,box-shadow .2s}
+.search-box:focus-within{border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.1)}
+.search-box input{flex:1;border:none;outline:none;padding:14px 18px;font-size:15px;background:transparent;color:var(--text)}
+.search-box input::placeholder{color:var(--text-muted)}
+.search-box button{background:var(--primary);color:#fff;border:none;padding:0 22px;font-size:14px;font-weight:500;cursor:pointer;transition:background .2s;white-space:nowrap}
+.search-box button:hover{background:var(--primary-dark)}
+.search-count{text-align:center;font-size:12px;color:var(--text-muted);margin-top:8px;min-height:18px}
 
-  .stats{max-width:800px;margin:24px auto 0;padding:0 16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .stat-item{background:var(--card);border-radius:12px;padding:12px 20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.04);min-width:120px}
-  .stat-num{font-size:24px;font-weight:700;color:var(--primary)}
-  .stat-label{font-size:12px;color:var(--text-secondary);margin-top:2px}
+/* ===== Filters ===== */
+.filters{max-width:800px;margin:16px auto 0;padding:0 16px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;align-items:center}
+.filter-label{font-size:11px;color:var(--text-muted);width:100%;text-align:center;margin-bottom:2px;text-transform:uppercase;letter-spacing:.5px}
+.chip{padding:5px 14px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid var(--border);background:var(--card);color:var(--text-secondary);transition:all .2s;user-select:none;font-weight:500}
+.chip:hover{border-color:var(--primary-light);color:var(--primary)}
+.chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.chip.pass-chip.active{background:var(--success);border-color:var(--success)}
+.chip.fail-chip.active{background:var(--danger);border-color:var(--danger)}
+.chip.multi{position:relative}
+.chip.multi.selected{background:#eff6ff;color:var(--primary);border-color:var(--primary-light)}
 
-  .container{max-width:800px;margin:24px auto;padding:0 16px 60px}
+/* Stats pills */
+.stats{max-width:800px;margin:16px auto 0;padding:0 16px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.stat-pill{background:var(--card);border-radius:20px;padding:6px 14px;font-size:12px;box-shadow:var(--shadow);display:flex;align-items:center;gap:4px;border:1px solid var(--border)}
+.stat-pill .num{font-weight:700;font-size:14px}
+.stat-pill .lbl{color:var(--text-muted)}
 
-  .status{text-align:center;padding:40px 20px;color:var(--text-secondary)}
-  .status .icon{font-size:48px;margin-bottom:12px}
-  .status .msg{font-size:15px}
+/* Ring chart */
+.ring-chart-wrap{max-width:800px;margin:16px auto 0;padding:0 16px;display:flex;justify-content:center;gap:40px}
+.ring-chart{display:flex;flex-direction:column;align-items:center;gap:6px}
+.ring-chart svg{width:80px;height:80px;transform:rotate(-90deg)}
+.ring-chart .ring-bg{fill:none;stroke:var(--border);stroke-width:6}
+.ring-chart .ring-fg{fill:none;stroke-width:6;stroke-linecap:round;transition:stroke-dashoffset .8s ease}
+.ring-chart .ring-label{font-size:11px;color:var(--text-muted);font-weight:500}
+.ring-chart .ring-value{font-size:18px;font-weight:700}
 
-  .result-card{background:var(--card);border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:var(--shadow);transition:transform .15s;border:1px solid var(--border)}
-  .result-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.1)}
-  .card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
-  .student-name{font-size:20px;font-weight:700}
-  .student-class{font-size:13px;color:var(--text-secondary);background:#f1f5f9;padding:4px 12px;border-radius:8px}
-  .student-id{font-size:12px;color:#94a3b8;margin-top:2px}
-  .student-school{font-size:12px;color:var(--primary);margin-top:2px;font-weight:500}
+/* ===== Container ===== */
+.container{max-width:800px;margin:20px auto;padding:0 16px 60px}
 
-  .score-section{margin-bottom:16px}
-  .score-section:last-child{margin-bottom:0}
-  .level-badge{display:inline-block;padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;margin-bottom:10px}
-  .level-badge.cet4{background:#dbeafe;color:#1d4ed8}
-  .level-badge.cet6{background:#ede9fe;color:#6d28d9}
+/* ===== Cards ===== */
+.result-card{background:var(--card);border-radius:var(--radius);padding:20px 24px;margin-bottom:12px;box-shadow:var(--shadow);border:1px solid var(--border);border-left:4px solid var(--border);transition:box-shadow .2s,transform .15s;animation:fadeIn .3s ease both;cursor:pointer}
+.result-card:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.result-card.status-found{border-left-color:var(--success)}
+.result-card.status-not_found,.result-card.status-pending_retry{border-left-color:var(--danger)}
+.result-card.status-id_incomplete{border-left-color:var(--text-muted)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-  .score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:12px}
-  .score-item{text-align:center;padding:12px 8px;background:#f8fafc;border-radius:10px}
-  .score-item .label{font-size:11px;color:var(--text-secondary);margin-bottom:4px}
-  .score-item .value{font-size:22px;font-weight:700}
-  .score-item .value.pass{color:var(--success)}
-  .score-item .value.fail{color:var(--danger)}
-  .score-item.total{background:linear-gradient(135deg,#eff6ff,#f0f0ff)}
-  .score-item.total .value{font-size:28px;color:var(--primary)}
+.card-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px}
+.student-info{flex:1;min-width:0}
+.student-name{font-size:18px;font-weight:700}
+.student-meta{display:flex;gap:12px;margin-top:3px;flex-wrap:wrap}
+.student-id{font-size:12px;color:var(--text-muted)}
+.student-school{font-size:12px;color:var(--primary);font-weight:500}
+.student-class{font-size:12px;color:var(--text-secondary);background:#f1f5f9;padding:3px 10px;border-radius:6px;font-weight:500;white-space:nowrap}
+.pass-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600;margin-left:8px}
+.pass-tag.yes{background:#d1fae5;color:#065f46}
+.pass-tag.no{background:#fee2e2;color:#991b1b}
 
-  .pass-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;margin-left:8px;font-weight:600}
-  .pass-tag.yes{background:#d1fae5;color:#065f46}
-  .pass-tag.no{background:#fee2e2;color:#991b1b}
+/* Expand toggle */
+.expand-hint{font-size:11px;color:var(--text-muted);margin-top:6px;display:flex;align-items:center;gap:4px}
+.expand-hint .chevron{transition:transform .2s;display:inline-block}
+.expanded .expand-hint .chevron{transform:rotate(180deg)}
+.score-details{max-height:0;overflow:hidden;transition:max-height .3s ease,opacity .2s;opacity:0}
+.expanded .score-details{max-height:500px;opacity:1}
 
-  .divider{height:1px;background:var(--border);margin:16px 0}
+/* Score section */
+.score-section{margin-top:14px}
+.score-section:first-of-type{margin-top:10px}
+.level-badge{display:inline-block;padding:2px 10px;border-radius:6px;font-size:11px;font-weight:600;margin-bottom:10px}
+.level-badge.cet4{background:#dbeafe;color:#1d4ed8}
+.level-badge.cet6{background:#ede9fe;color:#6d28d9}
 
-  .no-result{background:#fef3c7;border:1px solid #fde68a;border-radius:12px;padding:16px 20px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
-  .no-result .icon{font-size:20px}
-  .no-result .text{font-size:14px;color:#92400e}
+.score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.score-item{text-align:center;padding:10px 6px;background:#f8fafc;border-radius:var(--radius-sm);position:relative;overflow:hidden}
+.score-item .label{font-size:10px;color:var(--text-muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.3px}
+.score-item .value{font-size:20px;font-weight:700;position:relative;z-index:1}
+.score-item .value.pass{color:var(--success)}
+.score-item .value.fail{color:var(--danger)}
+.score-item.total{background:linear-gradient(135deg,#eff6ff,#f5f3ff)}
+.score-item.total .value{font-size:24px;color:var(--primary)}
+.score-bar{position:absolute;bottom:0;left:0;height:3px;background:var(--primary);border-radius:2px;transition:width .6s ease;opacity:.3}
+.score-item.total .score-bar{background:linear-gradient(90deg,var(--primary),var(--accent));opacity:.4}
 
-  .update-time{text-align:center;font-size:12px;color:#94a3b8;margin-top:24px;padding-bottom:20px}
+.divider{height:1px;background:var(--border);margin:14px 0}
 
-  .loading{text-align:center;padding:60px 20px}
-  .spinner{width:40px;height:40px;border:4px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
-  @keyframes spin{to{transform:rotate(360deg)}}
+.no-result{background:#fffbeb;border:1px solid #fde68a;border-radius:var(--radius-sm);padding:14px 18px;font-size:13px;color:#92400e;display:flex;align-items:center;gap:8px}
 
-  @media(max-width:480px){
-    .header{padding:36px 16px 44px}
-    .header h1{font-size:22px}
-    .score-grid{grid-template-columns:repeat(2,1fr)}
-    .result-card{padding:18px}
-    .student-name{font-size:18px}
-  }
+/* Status */
+.status{text-align:center;padding:48px 20px;color:var(--text-secondary)}
+.status .icon{font-size:48px;margin-bottom:12px}
+.status .msg{font-size:15px}
+
+/* Loading */
+.loading{text-align:center;padding:60px 20px}
+.spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 14px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Export button */
+.export-btn{position:fixed;bottom:24px;right:24px;background:var(--primary);color:#fff;border:none;border-radius:50%;width:48px;height:48px;font-size:20px;cursor:pointer;box-shadow:var(--shadow-lg);transition:transform .2s,background .2s;display:flex;align-items:center;justify-content:center;z-index:10}
+.export-btn:hover{background:var(--primary-dark);transform:scale(1.1)}
+.export-btn:active{transform:scale(.95)}
+
+/* Footer */
+.footer{text-align:center;font-size:11px;color:var(--text-muted);padding:20px 16px 32px;border-top:1px solid var(--border);max-width:800px;margin:0 auto}
+
+/* Responsive */
+@media(max-width:600px){
+  .header{padding:40px 16px 48px}
+  .header h1{font-size:24px}
+  .data-banner-inner{gap:16px;padding:12px 16px;font-size:12px}
+  .data-banner-inner .banner-val{font-size:14px}
+  .score-grid{grid-template-columns:repeat(2,1fr)}
+  .result-card{padding:16px}
+  .student-name{font-size:16px}
+  .ring-chart-wrap{gap:24px}
+  .export-btn{bottom:16px;right:16px;width:44px;height:44px}
+}
 </style>
 </head>
 <body>
 
 <div class="header">
   <h1>CET 成绩查询</h1>
-  <p>福清华侨中学 · 2026年上半年四六级成绩</p>
+  <p class="subtitle">福清华侨中学 · 2026年上半年四六级成绩</p>
+</div>
+
+<div class="data-banner">
+  <div class="data-banner-inner" id="dataBanner">
+    <div class="banner-item"><span class="banner-val" id="bannerTotal">-</span><span class="banner-label">总人数</span></div>
+    <div class="banner-item"><span class="banner-val" id="bannerFound">-</span><span class="banner-label">查到成绩</span></div>
+    <div class="banner-item"><span class="banner-val" id="bannerPass">-</span><span class="banner-label">已通过</span></div>
+    <div class="banner-item"><span class="banner-val" id="bannerTime">-</span><span class="banner-label">更新时间</span></div>
+  </div>
 </div>
 
 <div class="search-wrap">
@@ -106,23 +173,24 @@
     <input type="text" id="searchInput" placeholder="输入姓名搜索..." autocomplete="off">
     <button onclick="doSearch()">搜索</button>
   </div>
+  <div class="search-count" id="searchCount"></div>
 </div>
 
 <div class="filters" id="classFilters">
-  <div class="filter-label">按班级筛选</div>
-  <span class="chip active" data-filter="all" onclick="setClassFilter(this)">全部</span>
-  <span class="chip" data-filter="1班" onclick="setClassFilter(this)">1班</span>
-  <span class="chip" data-filter="2班" onclick="setClassFilter(this)">2班</span>
-  <span class="chip" data-filter="3班" onclick="setClassFilter(this)">3班</span>
-  <span class="chip" data-filter="4班" onclick="setClassFilter(this)">4班</span>
-  <span class="chip" data-filter="5班" onclick="setClassFilter(this)">5班</span>
-  <span class="chip" data-filter="6班" onclick="setClassFilter(this)">6班</span>
-  <span class="chip" data-filter="7班" onclick="setClassFilter(this)">7班</span>
-  <span class="chip" data-filter="8班" onclick="setClassFilter(this)">8班</span>
-  <span class="chip" data-filter="9班" onclick="setClassFilter(this)">9班</span>
-  <span class="chip" data-filter="10班" onclick="setClassFilter(this)">10班</span>
-  <span class="chip" data-filter="11班" onclick="setClassFilter(this)">11班</span>
-  <span class="chip" data-filter="12班" onclick="setClassFilter(this)">12班</span>
+  <div class="filter-label">按班级筛选（Ctrl+点击多选）</div>
+  <span class="chip active multi" data-filter="all" onclick="setClassFilter(this,event)">全部</span>
+  <span class="chip multi" data-filter="1班" onclick="setClassFilter(this,event)">1班</span>
+  <span class="chip multi" data-filter="2班" onclick="setClassFilter(this,event)">2班</span>
+  <span class="chip multi" data-filter="3班" onclick="setClassFilter(this,event)">3班</span>
+  <span class="chip multi" data-filter="4班" onclick="setClassFilter(this,event)">4班</span>
+  <span class="chip multi" data-filter="5班" onclick="setClassFilter(this,event)">5班</span>
+  <span class="chip multi" data-filter="6班" onclick="setClassFilter(this,event)">6班</span>
+  <span class="chip multi" data-filter="7班" onclick="setClassFilter(this,event)">7班</span>
+  <span class="chip multi" data-filter="8班" onclick="setClassFilter(this,event)">8班</span>
+  <span class="chip multi" data-filter="9班" onclick="setClassFilter(this,event)">9班</span>
+  <span class="chip multi" data-filter="10班" onclick="setClassFilter(this,event)">10班</span>
+  <span class="chip multi" data-filter="11班" onclick="setClassFilter(this,event)">11班</span>
+  <span class="chip multi" data-filter="12班" onclick="setClassFilter(this,event)">12班</span>
 </div>
 
 <div class="filters" id="passFilters">
@@ -136,6 +204,8 @@
 
 <div class="stats" id="stats"></div>
 
+<div class="ring-chart-wrap" id="ringCharts"></div>
+
 <div class="container" id="results">
   <div class="loading" id="loading">
     <div class="spinner"></div>
@@ -143,42 +213,63 @@
   </div>
 </div>
 
-<div class="update-time" id="updateTime"></div>
+<div class="footer" id="footer"></div>
+
+<button class="export-btn" onclick="exportCSV()" title="导出当前结果为 CSV">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+</button>
 
 <script>
 let allData = [];
-let currentClass = "all";
+let selectedClasses = new Set();
 let currentPass = "all";
+let updateTimestamp = "";
 
-// 判断学生是否有成绩
-function hasScore(s) {
-  return !!(s.cet4 || s.cet6);
-}
-
-// 判断学生是否通过（按实际参加的考试判断，仅对有成绩的学生）
+// ===== Helpers =====
+function hasScore(s) { return !!(s.cet4 || s.cet6); }
 function isPassed(s) {
   if (s.cet4 && s.cet4.total >= 425) return true;
   if (s.cet6 && s.cet6.total >= 425) return true;
   return false;
 }
+function getSchool(s) { return (s.cet4 && s.cet4.school) || (s.cet6 && s.cet6.school) || ""; }
+function getStatus(s) {
+  if (s.status === "found") return "found";
+  if (s.status === "id_incomplete") return "id_incomplete";
+  if (s.status === "pending_retry") return "pending_retry";
+  return "not_found";
+}
 
-// 加载数据
+// ===== Load =====
 async function loadData() {
   try {
     const resp = await fetch("scores.json?t=" + Date.now());
     if (!resp.ok) throw new Error("HTTP " + resp.status);
     const json = await resp.json();
     allData = json.data || [];
-    document.getElementById("updateTime").textContent = "数据更新时间: " + (json.update_time || "未知");
+    updateTimestamp = json.update_time || "未知";
+    updateBanner(allData);
     showStats(allData);
+    showRingCharts(allData);
     applyFilters();
   } catch (e) {
     document.getElementById("loading").innerHTML =
-      '<div class="status"><div class="icon">📭</div><div class="msg">暂无数据<br><small style="color:#94a3b8">请先运行爬虫脚本抓取成绩，或将 scores.json 上传到此页面同目录</small></div></div>';
+      '<div class="status"><div class="icon">📭</div><div class="msg">暂无数据<br><small style="color:var(--text-muted)">请先运行爬虫脚本抓取成绩</small></div></div>';
   }
 }
 
-// 显示统计（基于当前筛选结果）
+// ===== Banner =====
+function updateBanner(data) {
+  const total = data.length;
+  const found = data.filter(s => hasScore(s)).length;
+  const passed = data.filter(s => hasScore(s) && isPassed(s)).length;
+  document.getElementById("bannerTotal").textContent = total;
+  document.getElementById("bannerFound").textContent = found;
+  document.getElementById("bannerPass").textContent = passed;
+  document.getElementById("bannerTime").textContent = updateTimestamp ? updateTimestamp.slice(5, 16) : "-";
+}
+
+// ===== Stats pills =====
 function showStats(data) {
   const total = data.length;
   const cet4 = data.filter(s => s.cet4).length;
@@ -186,62 +277,88 @@ function showStats(data) {
   const passed = data.filter(s => hasScore(s) && isPassed(s)).length;
   const failed = data.filter(s => hasScore(s) && !isPassed(s)).length;
   const success = data.filter(s => s.status === "found").length;
-  const error = data.filter(s => s.status === "not_found" || s.status === "pending_retry" || s.status === "id_incomplete").length;
-  document.getElementById("stats").innerHTML = `
-    <div class="stat-item"><div class="stat-num">${total}</div><div class="stat-label">总人数</div></div>
-    <div class="stat-item"><div class="stat-num">${cet4}</div><div class="stat-label">考四级</div></div>
-    <div class="stat-item"><div class="stat-num">${cet6}</div><div class="stat-label">考六级</div></div>
-    <div class="stat-item"><div class="stat-num" style="color:var(--success)">${passed}</div><div class="stat-label">已通过</div></div>
-    <div class="stat-item"><div class="stat-num" style="color:var(--danger)">${failed}</div><div class="stat-label">未通过</div></div>
-    <div class="stat-item"><div class="stat-num" style="color:var(--primary)">${success}</div><div class="stat-label">查询成功</div></div>
-    <div class="stat-item"><div class="stat-num" style="color:var(--text-secondary)">${error}</div><div class="stat-label">查询失败</div></div>
-  `;
+  const error = data.filter(s => s.status !== "found").length;
+  document.getElementById("stats").innerHTML = [
+    pill(total, "总人数"), pill(cet4, "考四级"), pill(cet6, "考六级"),
+    pill(passed, "已通过", "var(--success)"), pill(failed, "未通过", "var(--danger)"),
+    pill(success, "查询成功", "var(--primary)"), pill(error, "查询失败", "var(--text-muted)")
+  ].join("");
+}
+function pill(num, label, color) {
+  return `<div class="stat-pill"><span class="num" style="color:${color||'var(--text)'}">${num}</span><span class="lbl">${label}</span></div>`;
 }
 
-// 应用筛选
+// ===== Ring charts =====
+function showRingCharts(data) {
+  const cet4Students = data.filter(s => s.cet4);
+  const cet6Students = data.filter(s => s.cet6);
+  const cet4Pass = cet4Students.filter(s => s.cet4.total >= 425).length;
+  const cet6Pass = cet6Students.filter(s => s.cet6.total >= 425).length;
+  const cet4Rate = cet4Students.length ? Math.round(cet4Pass / cet4Students.length * 100) : 0;
+  const cet6Rate = cet6Students.length ? Math.round(cet6Pass / cet6Students.length * 100) : 0;
+  document.getElementById("ringCharts").innerHTML =
+    ringSVG("四级通过率", cet4Rate, "var(--primary)") +
+    ringSVG("六级通过率", cet6Rate, "var(--accent)");
+}
+function ringSVG(label, pct, color) {
+  const r = 32, c = 2 * Math.PI * r, offset = c - (pct / 100) * c;
+  return `<div class="ring-chart">
+    <svg viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="${r}"/><circle class="ring-fg" cx="40" cy="40" r="${r}" stroke="${color}" stroke-dasharray="${c}" stroke-dashoffset="${offset}"/></svg>
+    <div class="ring-value" style="color:${color}">${pct}%</div>
+    <div class="ring-label">${label}</div>
+  </div>`;
+}
+
+// ===== Filters =====
 function applyFilters() {
   const keyword = document.getElementById("searchInput").value.trim();
   let filtered = allData;
 
-  // 班级筛选
-  if (currentClass !== "all") {
-    filtered = filtered.filter(s => s.class === currentClass);
+  if (selectedClasses.size > 0 && !selectedClasses.has("all")) {
+    filtered = filtered.filter(s => selectedClasses.has(s.class));
   }
+  if (currentPass === "pass") filtered = filtered.filter(s => hasScore(s) && isPassed(s));
+  else if (currentPass === "fail") filtered = filtered.filter(s => hasScore(s) && !isPassed(s));
+  else if (currentPass === "success") filtered = filtered.filter(s => s.status === "found");
+  else if (currentPass === "error") filtered = filtered.filter(s => s.status !== "found");
 
-  // 成绩状态筛选
-  if (currentPass === "pass") {
-    filtered = filtered.filter(s => hasScore(s) && isPassed(s));
-  } else if (currentPass === "fail") {
-    filtered = filtered.filter(s => hasScore(s) && !isPassed(s));
-  } else if (currentPass === "success") {
-    filtered = filtered.filter(s => s.status === "found");
-  } else if (currentPass === "error") {
-    filtered = filtered.filter(s => s.status === "not_found" || s.status === "pending_retry" || s.status === "id_incomplete");
-  }
+  if (keyword) filtered = filtered.filter(s => s.name.includes(keyword));
 
-  // 姓名搜索
-  if (keyword) {
-    filtered = filtered.filter(s => s.name.includes(keyword));
-  }
-
+  document.getElementById("searchCount").textContent = keyword || selectedClasses.size > 0 || currentPass !== "all"
+    ? `找到 ${filtered.length} 条结果` : "";
   showStats(filtered);
   renderResults(filtered, keyword);
 }
 
-function showAll() { applyFilters(); }
-
-// 搜索
 function doSearch() { applyFilters(); }
 
-// 班级筛选
-function setClassFilter(el) {
-  document.querySelectorAll("#classFilters .chip").forEach(c => c.classList.remove("active"));
-  el.classList.add("active");
-  currentClass = el.dataset.filter;
+function setClassFilter(el, e) {
+  const filter = el.dataset.filter;
+  if (filter === "all") {
+    selectedClasses.clear();
+    selectedClasses.add("all");
+    document.querySelectorAll("#classFilters .chip").forEach(c => { c.classList.remove("active","selected"); });
+    el.classList.add("active");
+  } else {
+    document.querySelector('#classFilters .chip[data-filter="all"]').classList.remove("active");
+    selectedClasses.delete("all");
+    if (e && e.ctrlKey) {
+      if (selectedClasses.has(filter)) { selectedClasses.delete(filter); el.classList.remove("selected"); }
+      else { selectedClasses.add(filter); el.classList.add("selected"); }
+    } else {
+      selectedClasses.clear();
+      selectedClasses.add(filter);
+      document.querySelectorAll("#classFilters .chip.multi").forEach(c => c.classList.remove("selected"));
+      el.classList.add("selected");
+    }
+    if (selectedClasses.size === 0) {
+      selectedClasses.add("all");
+      document.querySelector('#classFilters .chip[data-filter="all"]').classList.add("active");
+    }
+  }
   applyFilters();
 }
 
-// 通过情况筛选
 function setPassFilter(el) {
   document.querySelectorAll("#passFilters .chip").forEach(c => c.classList.remove("active"));
   el.classList.add("active");
@@ -249,81 +366,107 @@ function setPassFilter(el) {
   applyFilters();
 }
 
-// 渲染结果
+// ===== Render =====
 function renderResults(results, keyword) {
   const container = document.getElementById("results");
   if (results.length === 0) {
-    container.innerHTML = `<div class="status"><div class="icon"></div><div class="msg">${keyword ? '未找到 "' + escapeHtml(keyword) + '" 的相关记录' : '当前筛选条件下暂无数据'}</div></div>`;
+    container.innerHTML = `<div class="status"><div class="msg">${keyword ? '未找到 "' + escapeHtml(keyword) + '" 的相关记录' : '当前筛选条件下暂无数据'}</div></div>`;
     return;
   }
-
   let html = "";
-  results.forEach(s => {
+  results.forEach((s, idx) => {
+    const status = getStatus(s);
+    const school = getSchool(s);
     const passed = isPassed(s);
-    // 获取学校信息（优先从有成绩的项取）
-    const school = (s.cet4 && s.cet4.school) || (s.cet6 && s.cet6.school) || "";
-    html += `<div class="result-card">`;
-    html += `<div class="card-header"><div><div class="student-name">${highlightName(s.name, keyword)}</div><div class="student-id">${maskId(s.id)}</div>${school ? `<div class="student-school">🏫 ${escapeHtml(school)}</div>` : ''}</div><div style="display:flex;align-items:center;gap:8px"><span class="student-class">${s.class}</span>${s.cet4 || s.cet6 ? `<span class="pass-tag ${passed ? 'yes' : 'no'}">${passed ? '已通过' : '未通过'}</span>` : ''}</div></div>`;
+    html += `<div class="result-card status-${status}" style="animation-delay:${Math.min(idx * 30, 600)}ms" onclick="toggleExpand(this)">`;
+    html += `<div class="card-header"><div class="student-info"><div class="student-name">${highlightName(s.name, keyword)}</div><div class="student-meta"><span class="student-id">${maskId(s.id)}</span>${school ? `<span class="student-school">🏫 ${escapeHtml(school)}</span>` : ''}</div></div><div style="display:flex;align-items:center;gap:6px"><span class="student-class">${s.class}</span>${hasScore(s) ? `<span class="pass-tag ${passed ? 'yes' : 'no'}">${passed ? '已通过' : '未通过'}</span>` : ''}</div></div>`;
+    html += `<div class="expand-hint"><span class="chevron"></span> 点击${hasScore(s) ? '展开' : ''}详情</div>`;
+    html += `<div class="score-details">`;
 
-    if (s.cet4) {
-      html += renderScoreSection(s.cet4, "cet4", "CET-4 四级");
-    }
+    if (s.cet4) html += renderScoreSection(s.cet4, "cet4", "CET-4 四级");
     if (s.cet6) {
       if (s.cet4) html += `<div class="divider"></div>`;
       html += renderScoreSection(s.cet6, "cet6", "CET-6 六级");
     }
-    if (!s.cet4 && !s.cet6) {
-      html += `<div class="no-result"><span class="icon">️</span><span class="text">未查到成绩，可能未参加本次考试或信息有误。</span></div>`;
+    if (!hasScore(s)) {
+      html += `<div class="no-result">未查到成绩，可能未参加本次考试或信息有误。</div>`;
     }
-
-    html += `</div>`;
+    html += `</div></div>`;
   });
-
   container.innerHTML = html;
 }
 
-// 渲染成绩区域
+function toggleExpand(card) {
+  card.classList.toggle("expanded");
+}
+
 function renderScoreSection(score, cls, label) {
   const total = score.total;
   const pass = total >= 425;
-  let html = `<div class="score-section">`;
-  html += `<span class="level-badge ${cls}">${label}</span>`;
-  html += `<div class="score-grid">`;
-  html += `<div class="score-item total"><div class="label">总分</div><div class="value ${pass ? 'pass' : 'fail'}">${total}</div></div>`;
-  html += `<div class="score-item"><div class="label">听力</div><div class="value">${score.listening || "-"}</div></div>`;
-  html += `<div class="score-item"><div class="label">阅读</div><div class="value">${score.reading || "-"}</div></div>`;
-  html += `<div class="score-item"><div class="label">写作和翻译</div><div class="value">${score.writing || "-"}</div></div>`;
+  const maxScores = { total: 710, listening: 249, reading: 249, writing: 212 };
+  let html = `<div class="score-section"><span class="level-badge ${cls}">${label}</span><div class="score-grid">`;
+  html += scoreItem("总分", total, maxScores.total, pass ? "pass" : "fail", true);
+  html += scoreItem("听力", score.listening, maxScores.listening, "", false);
+  html += scoreItem("阅读", score.reading, maxScores.reading, "", false);
+  html += scoreItem("写作和翻译", score.writing, maxScores.writing, "", false);
   html += `</div></div>`;
   return html;
 }
 
-function escapeHtml(str) {
-  return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+function scoreItem(label, value, max, cls, isTotal) {
+  const pct = value && max ? Math.min(Math.round(value / max * 100), 100) : 0;
+  return `<div class="score-item${isTotal ? ' total' : ''}"><div class="label">${label}</div><div class="value ${cls}">${value || "-"}</div><div class="score-bar" style="width:${pct}%"></div></div>`;
 }
 
+// ===== Utils =====
+function escapeHtml(str) { return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
 function highlightName(name, keyword) {
   if (!keyword) return escapeHtml(name);
   const escaped = escapeHtml(name);
   const kw = escapeHtml(keyword);
   return escaped.replace(new RegExp(kw, "g"), `<mark style="background:#fef08a;padding:0 2px;border-radius:2px">${kw}</mark>`);
 }
-
 function maskId(id) {
   if (!id) return "";
-  if (id.includes("*")) return id; // 已是脱敏值,直接返回
+  if (id.includes("*")) return id;
   if (id.length <= 8) return id;
   return id.substring(0, 4) + "****" + id.substring(id.length - 4);
 }
 
-document.getElementById("searchInput").addEventListener("keydown", function(e) {
-  if (e.key === "Enter") doSearch();
-});
+// ===== Export CSV =====
+function exportCSV() {
+  const keyword = document.getElementById("searchInput").value.trim();
+  let data = allData;
+  if (selectedClasses.size > 0 && !selectedClasses.has("all")) data = data.filter(s => selectedClasses.has(s.class));
+  if (currentPass === "pass") data = data.filter(s => hasScore(s) && isPassed(s));
+  else if (currentPass === "fail") data = data.filter(s => hasScore(s) && !isPassed(s));
+  else if (currentPass === "success") data = data.filter(s => s.status === "found");
+  else if (currentPass === "error") data = data.filter(s => s.status !== "found");
+  if (keyword) data = data.filter(s => s.name.includes(keyword));
 
+  const BOM = "\uFEFF";
+  const header = "班级,姓名,身份证号,学校,四级总分,四级听力,四级阅读,四级写作翻译,六级总分,六级听力,六级阅读,六级写作翻译,状态\n";
+  const rows = data.map(s => {
+    const school = getSchool(s);
+    const c4 = s.cet4 || {};
+    const c6 = s.cet6 || {};
+    return [s.class, s.name, s.id, school, c4.total||"", c4.listening||"", c4.reading||"", c4.writing||"", c6.total||"", c6.listening||"", c6.reading||"", c6.writing||"", s.status||""].join(",");
+  }).join("\n");
+
+  const blob = new Blob([BOM + header + rows], { type: "text/csv;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = `CET成绩_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click(); URL.revokeObjectURL(url);
+}
+
+// ===== Footer =====
+document.getElementById("footer").innerHTML = `数据来源：全国大学英语四、六级考试官网 · 更新时间：${updateTimestamp}`;
+
+// ===== Events =====
+document.getElementById("searchInput").addEventListener("keydown", function(e) { if (e.key === "Enter") doSearch(); });
 let searchTimer;
-document.getElementById("searchInput").addEventListener("input", function() {
-  clearTimeout(searchTimer);
-  searchTimer = setTimeout(doSearch, 300);
-});
+document.getElementById("searchInput").addEventListener("input", function() { clearTimeout(searchTimer); searchTimer = setTimeout(doSearch, 300); });
 
 loadData();
 </script>
