@@ -111,14 +111,14 @@ def query_score(session, name, id_number, km=1):
                 code = data.get("code")
                 if code == 0:
                     return {
-                        “total”: data.get(“score”),
-                        “listening”: data.get(“sco_lc”),
-                        “reading”: data.get(“sco_rd”),
-                        # 官网成绩详情标为”写作和翻译”。
-                        “writing”: data.get(“sco_wt”),
-                        “ticket”: data.get(“zkzh”, “”),
-                        “school”: data.get(“xx”, “”),
-                        “level”: “四级” if km == 1 else “六级”
+                        "total": data.get("score"),
+                        "listening": data.get("sco_lc"),
+                        "reading": data.get("sco_rd"),
+                        # 官网成绩详情标为"写作和翻译"。
+                        "writing": data.get("sco_wt"),
+                        "ticket": data.get("zkzh", ""),
+                        "school": data.get("xx", ""),
+                        "level": "四级" if km == 1 else "六级"
                     }, True
                 if code == 403:
                     msg = data.get("msg", "")
