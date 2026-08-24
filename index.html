@@ -383,7 +383,8 @@ function renderResults(results, keyword) {
       html += renderScoreSection(s.cet6, "cet6", "CET-6 六级");
     }
     if (!hasScore(s)) {
-      html += `<div class="no-result">未查到成绩，可能未参加本次考试或信息有误。</div>`;
+      const msg = s.status === "id_incomplete" ? "身份信息不完整" : "未查到成绩，可能未参加本次考试或信息有误。";
+      html += `<div class="no-result">${msg}</div>`;
     }
     html += `</div></div>`;
   });
