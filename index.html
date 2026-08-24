@@ -28,10 +28,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hira
 
 /* Data banner */
 .data-banner{max-width:720px;margin:-20px auto 0;position:relative;z-index:2;padding:0 16px}
-.data-banner-inner{background:rgba(255,255,255,.12);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:14px 24px;display:flex;justify-content:center;gap:32px;flex-wrap:wrap;color:#fff;font-size:13px}
+.data-banner-inner{background:var(--card);border-radius:var(--radius);padding:14px 24px;display:flex;justify-content:center;gap:32px;flex-wrap:wrap;color:var(--text);font-size:13px;box-shadow:var(--shadow-md);border:1px solid var(--border)}
 .data-banner-inner .banner-item{display:flex;align-items:center;gap:6px}
-.data-banner-inner .banner-val{font-weight:700;font-size:16px}
-.data-banner-inner .banner-label{opacity:.7}
+.data-banner-inner .banner-val{font-weight:700;font-size:16px;color:var(--primary)}
+.data-banner-inner .banner-label{color:var(--text-muted)}
 
 /* ===== Search ===== */
 .search-wrap{max-width:560px;margin:20px auto 0;padding:0 16px;position:relative;z-index:2}
@@ -177,7 +177,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hira
 </div>
 
 <div class="filters" id="classFilters">
-  <div class="filter-label">按班级筛选（Ctrl+点击多选）</div>
+  <div class="filter-label">按班级筛选（点击切换，可多选）</div>
   <span class="chip active multi" data-filter="all" onclick="setClassFilter(this,event)">全部</span>
   <span class="chip multi" data-filter="1班" onclick="setClassFilter(this,event)">1班</span>
   <span class="chip multi" data-filter="2班" onclick="setClassFilter(this,event)">2班</span>
@@ -343,15 +343,8 @@ function setClassFilter(el, e) {
   } else {
     document.querySelector('#classFilters .chip[data-filter="all"]').classList.remove("active");
     selectedClasses.delete("all");
-    if (e && e.ctrlKey) {
-      if (selectedClasses.has(filter)) { selectedClasses.delete(filter); el.classList.remove("selected"); }
-      else { selectedClasses.add(filter); el.classList.add("selected"); }
-    } else {
-      selectedClasses.clear();
-      selectedClasses.add(filter);
-      document.querySelectorAll("#classFilters .chip.multi").forEach(c => c.classList.remove("selected"));
-      el.classList.add("selected");
-    }
+    if (selectedClasses.has(filter)) { selectedClasses.delete(filter); el.classList.remove("selected"); }
+    else { selectedClasses.add(filter); el.classList.add("selected"); }
     if (selectedClasses.size === 0) {
       selectedClasses.add("all");
       document.querySelector('#classFilters .chip[data-filter="all"]').classList.add("active");
