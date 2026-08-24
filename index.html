@@ -130,7 +130,8 @@
   <span class="chip active" data-filter="all" onclick="setPassFilter(this)">全部</span>
   <span class="chip pass-chip" data-filter="pass" onclick="setPassFilter(this)">已通过</span>
   <span class="chip fail-chip" data-filter="fail" onclick="setPassFilter(this)">未通过</span>
-  <span class="chip" data-filter="no_score" onclick="setPassFilter(this)">未查询到成绩</span>
+  <span class="chip" data-filter="success" onclick="setPassFilter(this)">查询成功</span>
+  <span class="chip" data-filter="error" onclick="setPassFilter(this)">查询失败</span>
 </div>
 
 <div class="stats" id="stats"></div>
@@ -184,14 +185,16 @@ function showStats(data) {
   const cet6 = data.filter(s => s.cet6).length;
   const passed = data.filter(s => hasScore(s) && isPassed(s)).length;
   const failed = data.filter(s => hasScore(s) && !isPassed(s)).length;
-  const noScore = data.filter(s => !hasScore(s)).length;
+  const success = data.filter(s => s.status === "found").length;
+  const error = data.filter(s => s.status === "not_found" || s.status === "pending_retry" || s.status === "id_incomplete").length;
   document.getElementById("stats").innerHTML = `
     <div class="stat-item"><div class="stat-num">${total}</div><div class="stat-label">总人数</div></div>
     <div class="stat-item"><div class="stat-num">${cet4}</div><div class="stat-label">考四级</div></div>
     <div class="stat-item"><div class="stat-num">${cet6}</div><div class="stat-label">考六级</div></div>
     <div class="stat-item"><div class="stat-num" style="color:var(--success)">${passed}</div><div class="stat-label">已通过</div></div>
     <div class="stat-item"><div class="stat-num" style="color:var(--danger)">${failed}</div><div class="stat-label">未通过</div></div>
-    <div class="stat-item"><div class="stat-num" style="color:var(--text-secondary)">${noScore}</div><div class="stat-label">未查询到</div></div>
+    <div class="stat-item"><div class="stat-num" style="color:var(--primary)">${success}</div><div class="stat-label">查询成功</div></div>
+    <div class="stat-item"><div class="stat-num" style="color:var(--text-secondary)">${error}</div><div class="stat-label">查询失败</div></div>
   `;
 }
 
@@ -210,8 +213,10 @@ function applyFilters() {
     filtered = filtered.filter(s => hasScore(s) && isPassed(s));
   } else if (currentPass === "fail") {
     filtered = filtered.filter(s => hasScore(s) && !isPassed(s));
-  } else if (currentPass === "no_score") {
-    filtered = filtered.filter(s => !hasScore(s));
+  } else if (currentPass === "success") {
+    filtered = filtered.filter(s => s.status === "found");
+  } else if (currentPass === "error") {
+    filtered = filtered.filter(s => s.status === "not_found" || s.status === "pending_retry" || s.status === "id_incomplete");
   }
 
   // 姓名搜索
